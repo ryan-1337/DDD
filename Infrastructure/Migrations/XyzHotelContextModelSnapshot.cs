@@ -27,8 +27,8 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("PHONE")
-                        .HasColumnType("int");
+                    b.Property<string>("PHONE")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("USERNAME")
                         .IsRequired()

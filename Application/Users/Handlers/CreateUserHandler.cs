@@ -1,7 +1,5 @@
 using Application.Users.Queries;
-using Application.Users.Validations;
 using Domain;
-using FluentValidation;
 using MediatR;
 
 namespace Application.Users.Handlers;
@@ -9,17 +7,15 @@ namespace Application.Users.Handlers;
 public class CreateUserHandler : IRequestHandler<CreateUserQuery, UserResponse>
 {
     private readonly IUserRepository _userRepository;
-    private readonly IValidator<CreateUserQuery> _userValidator;
 
-    public CreateUserHandler(IUserRepository userRepository, IValidator<CreateUserQuery> userValidator)
+    public CreateUserHandler(IUserRepository userRepository)
     {
         _userRepository = userRepository;
-        _userValidator = userValidator;
     }
 
     public async Task<UserResponse> Handle(CreateUserQuery query, CancellationToken cancellationToken)
     {
-        _userValidator.ValidateAndThrow(query);
+        //_userValidator.ValidateAndThrow(query);
         
         var user = new User
         {
