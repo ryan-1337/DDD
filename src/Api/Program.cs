@@ -1,12 +1,9 @@
 using Api;
 using Api.Middleware;
 using Application;
-using Application.Users.Validations;
 using Domain;
-using FluentValidation;
 using Infrastructure;
 using Infrastructure.Repository;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
