@@ -2,6 +2,8 @@ namespace Domain.Entities;
 
 public class Booking
 {
+    public Guid Id { get; }
+    public Guid ClientId { get; init; }
     public DateTime CheckInDate { get; }
     public int NumberOfNights { get; }
     public Room Room { get; }
@@ -10,9 +12,11 @@ public class Booking
     public bool IsConfirmed { get; private set; }
     public bool IsCancelled { get; private set; }
 
-    public Booking(DateTime checkInDate, int numberOfNights, Room room, decimal totalAmount,
+    public Booking(Guid clientId, DateTime checkInDate, int numberOfNights, Room room, decimal totalAmount,
         decimal initialPayment)
     {
+        Id = Guid.NewGuid();
+        ClientId = clientId;
         CheckInDate = checkInDate;
         NumberOfNights = numberOfNights;
         Room = room;

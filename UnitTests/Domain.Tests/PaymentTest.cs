@@ -7,7 +7,6 @@ namespace Domain.Tests;
 
 public class PaymentTest
 {
-    // Méthode de test pour vérifier si le paiement est ajouté avec succès
     [Fact]
     public async Task AddPayment_Success()
     {
