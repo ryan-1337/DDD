@@ -18,7 +18,9 @@ builder.Services.AddDbContext<XyzHotelContext>(opts =>
         ServerVersion.AutoDetect(connectionString),
 
         options => options.MigrationsAssembly("Infrastructure"));
-}).AddTransient<IUserRepository, UserRepository>();
+})
+    .AddTransient<IClientRepository, ClientRepository>()
+    .AddTransient<IPaymentRepository, PaymentRepository>();
 
 
 builder.Services

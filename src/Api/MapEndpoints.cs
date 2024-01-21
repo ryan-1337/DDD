@@ -6,7 +6,8 @@ public static class MapEndpoints
 {
     public static IEndpointRouteBuilder MapEndpoint(this IEndpointRouteBuilder group)
     {
-        group.MapUser();
+        group.MapClient();
+        group.MapPayment();
         return group;
     }
 }

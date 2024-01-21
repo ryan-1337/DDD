@@ -11,6 +11,7 @@
       <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
       <PackageReference Include="MediatR" Version="12.2.0" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -26,7 +27,17 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Application\Application.csproj" />
+      <ProjectReference Include="..\Domain\Domain.csproj" />
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Pomelo.EntityFrameworkCore.MySql">
+        <HintPath>..\..\..\..\.nuget\packages\pomelo.entityframeworkcore.mysql\8.0.0-beta.2\lib\net8.0\Pomelo.EntityFrameworkCore.MySql.dll</HintPath>
+      </Reference>
+      <Reference Include="Serilog.AspNetCore">
+        <HintPath>..\..\..\..\.nuget\packages\serilog.aspnetcore\8.0.0\lib\net8.0\Serilog.AspNetCore.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

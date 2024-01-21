@@ -10,5 +10,6 @@ public class XyzHotelContext : DbContext
         
     }
     
-    public DbSet<User> User { get; set; }
+    public DbSet<Client> Clients { get; set; }
+    public DbSet<Payment> Payments { get; set; }
 }
