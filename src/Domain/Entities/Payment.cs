@@ -2,10 +2,10 @@ namespace Domain.Entities;
 
 public class Payment
 {
-    public Guid Id { get; }
-    public Client Client { get; }
-    public decimal Amount { get; }
-    public DateTime Timestamp { get; }
+    public Guid Id { get; set; }
+    public Client Client { get; set; }
+    public decimal Amount { get; set; }
+    public DateTime Timestamp { get; set; }
 
     public Payment(Client client, decimal amount, DateTime timestamp)
     {

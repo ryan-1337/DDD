@@ -4,20 +4,18 @@ namespace Domain.Services;
 
 public class PaymentService
 {
-    private readonly IPaymentRepository paymentRepository;
+    private readonly IPaymentRepository _paymentRepository;
 
     public PaymentService(IPaymentRepository paymentRepository)
     {
-        this.paymentRepository = paymentRepository;
+        this._paymentRepository = paymentRepository;
     }
     
-    public void ProcessPayment(Client client, decimal amount)
+    public async Task<Payment> ProcessPayment(Payment payment)
     {
-        // Création d'une nouvelle transaction de paiement
-        var payment = new Payment(client, amount, DateTime.UtcNow);
-
         // Enregistrement de la transaction
-        paymentRepository.SaveAsync(payment);
+        await _paymentRepository.SaveAsync(payment);
+        return payment;
     }
 
     public decimal GetBalance(Client client)
