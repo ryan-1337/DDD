@@ -2,15 +2,20 @@ namespace Domain.Entities;
 
 public class Booking
 {
-    public Guid Id { get; }
+    public Guid Id { get; set; }
     public Guid ClientId { get; init; }
-    public DateTime CheckInDate { get; }
-    public int NumberOfNights { get; }
-    public Room Room { get; }
-    public decimal TotalAmount { get; }
-    public decimal InitialPayment { get; }
-    public bool IsConfirmed { get; private set; }
-    public bool IsCancelled { get; private set; }
+    public DateTime CheckInDate { get; set; }
+    public int NumberOfNights { get; set; }
+    public Room Room { get; set; }
+    public decimal TotalAmount { get; set; }
+    public decimal InitialPayment { get; set; }
+    public bool IsConfirmed { get; set; }
+    public bool IsCancelled { get; set; }
+
+    public Booking()
+    {
+        
+    }
 
     public Booking(Guid clientId, DateTime checkInDate, int numberOfNights, Room room, decimal totalAmount,
         decimal initialPayment)

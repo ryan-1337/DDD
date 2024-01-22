@@ -4,21 +4,25 @@ namespace Domain.Entities;
 
 public class Wallet
 {
-    public Guid Id { get; }
-    public Guid UserId{ get; }
-    public decimal Amount { get; }
-    
-    public Currency Currency { get; }
+    public Guid Id { get; set; }
+    public Guid ClientId{ get; set; }
+    public decimal Amount { get; set; }
+    public string Currency { get; set; }
 
-    public Wallet(Guid id, Guid userId, decimal amount, Currency currency)
+    public Wallet()
     {
-        Id = id;
-        UserId = userId;
+        
+    }
+    
+    public Wallet(Guid clientId, decimal amount, string currency)
+    {
+        Id = Guid.NewGuid();
+        ClientId = clientId;
         Amount = amount;
         Currency = currency;
     }
-    public Wallet(Guid userId)
+    public Wallet(Guid clientId)
     {
-        UserId = userId;
+        ClientId = ClientId;
     }
 }

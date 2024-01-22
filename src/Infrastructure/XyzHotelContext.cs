@@ -14,4 +14,6 @@ public class XyzHotelContext : DbContext
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Booking> Bookings { get; set; }
     public DbSet<Room> Rooms { get; set; }
+    public DbSet<Currency> Currencies { get; set; }
+    public DbSet<Wallet> Wallets { get; set; }
 }

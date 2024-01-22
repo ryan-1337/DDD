@@ -1,5 +1,6 @@
 using Domain;
 using Domain.Entities;
+using Infrastructure.Mapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository;
@@ -15,33 +16,39 @@ public class ClientRepository : IClientRepository
     
     public async Task<Client> AddAsync(Client client)
     {
-        await this._xyzHotelContext.Clients.AddAsync(new DataAccess.XyzHotel.Client
+        var clientDataAccess = new DataAccess.XyzHotel.Client
         {
-            ID = client.Id.ToString(), 
-            FULLNAME = client.FullName, 
-            EMAIL = client.Email, 
+            ID = client.Id.ToString(),
+            FULLNAME = client.FullName,
+            EMAIL = client.Email,
             PHONENUMBER = client.PhoneNumber
-        });
-        
-        await this._xyzHotelContext.SaveChangesAsync();
+        };
 
-        return client;
+        await _xyzHotelContext.Clients.AddAsync(clientDataAccess);
+        await _xyzHotelContext.SaveChangesAsync();
+
+        return ClientMapper.MapToEntity(clientDataAccess);
     }
 
     public async Task<Client?> GetClientByFullName(string fullName)
     {
-        var client = await this._xyzHotelContext.Clients.FirstOrDefaultAsync(x => x.FULLNAME == fullName);
-        return new Client(Guid.Parse(client.ID), client.FULLNAME, client.EMAIL, client.PHONENUMBER);
+        var clientDataAccess = await _xyzHotelContext.Clients
+            .FirstOrDefaultAsync(x => x.FULLNAME == fullName);
+
+        return clientDataAccess != null ? ClientMapper.MapToEntity(clientDataAccess) : null;
     }
-    
+
     public async Task<Client?> GetClientByEmail(string email)
     {
-        var client = await this._xyzHotelContext.Clients.FirstOrDefaultAsync(x => x.EMAIL == email);
-        return new Client(Guid.Parse(client.ID), client.FULLNAME, client.EMAIL, client.PHONENUMBER);
+        var clientDataAccess = await _xyzHotelContext.Clients
+            .FirstOrDefaultAsync(x => x.EMAIL == email);
+
+        return clientDataAccess != null ? ClientMapper.MapToEntity(clientDataAccess) : null;
     }
-    
-    public bool IsEmailAlreadyUsed(string email)
+
+    public async Task<bool> IsEmailAlreadyUsedAsync(string email)
     {
-        return _xyzHotelContext.Clients.Any(client => client.EMAIL == email);
+        return await _xyzHotelContext.Clients.AnyAsync(client => client.EMAIL == email);
     }
+
 }

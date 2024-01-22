@@ -17,7 +17,7 @@ public class CreateClientHandler : IRequestHandler<CreateClientQuery, ClientResp
     public async Task<ClientResponse> Handle(CreateClientQuery query, CancellationToken cancellationToken)
     {
 
-        if (_clientRepository.IsEmailAlreadyUsed(query.Email))
+        if (await _clientRepository.IsEmailAlreadyUsedAsync(query.Email))
         {
             throw new InvalidOperationException("L'adresse e-mail est déjà utilisée.");
         }

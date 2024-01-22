@@ -7,6 +7,11 @@ public class Payment
     public decimal Amount { get; set; }
     public DateTime Timestamp { get; set; }
 
+    public Payment()
+    {
+        
+    }
+    
     public Payment(Client client, decimal amount, DateTime timestamp)
     {
         Id = Guid.NewGuid();

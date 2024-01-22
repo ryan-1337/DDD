@@ -4,16 +4,28 @@ namespace Domain.Services;
 
 public class CurrencyConversionService
 {
-    public decimal ConvertAmount(decimal amount, Currency sourceCurrency, Currency targetCurrency)
+    private readonly Dictionary<string, decimal> exchangeRates;
+
+    public CurrencyConversionService()
     {
-        if (sourceCurrency.Equals(targetCurrency))
+        exchangeRates = new Dictionary<string, decimal>
         {
-            return amount;
-        }
-        else
-        {
-            decimal convertedAmount = amount * (1 / sourceCurrency.ExchangeRateToEuro) * targetCurrency.ExchangeRateToEuro;
-            return Math.Round(convertedAmount, 2);
-        }
+            { "EUR", 1.0m },
+            { "USD", 1.18m },  
+            { "GBP", 0.85m },  
+            { "JPY", 130.5m }, 
+            { "CHF", 1.08m }   
+        };
     }
+
+    public decimal ConvertAmount(decimal amount, string fromCurrency, string toCurrency)
+    {
+        if (!exchangeRates.ContainsKey(fromCurrency) || !exchangeRates.ContainsKey(toCurrency))
+        {
+            throw new ArgumentException("Devise non prise en charge");
+        }
+
+        decimal exchangeRate = exchangeRates[toCurrency] / exchangeRates[fromCurrency];
+        return amount * exchangeRate;
+    } 
 }

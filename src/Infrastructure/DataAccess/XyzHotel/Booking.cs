@@ -9,6 +9,6 @@ public class Booking
     public Room ROOM { get; set; }
     public decimal TOTAL_AMOUNT { get; set; }
     public decimal INITIAL_PAYMENT { get; set; }
-    public bool IS_CONFIRMED { get; private set; }
-    public bool IS_CANCELLED { get; private set; }
+    public bool IS_CONFIRMED { get; set; }
+    public bool IS_CANCELLED { get; set; }
 }

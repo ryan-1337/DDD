@@ -7,6 +7,11 @@ public class Room
     public decimal PricePerNight { get; set; }
     public List<string> Options { get; set; }
 
+    public Room()
+    {
+        
+    }
+    
     public Room(string name, decimal pricePerNight, List<string> options)
     {
         Id = Guid.NewGuid();
