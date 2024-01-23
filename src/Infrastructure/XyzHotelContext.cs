@@ -7,7 +7,23 @@ public class XyzHotelContext : DbContext
 {
     public XyzHotelContext(DbContextOptions<XyzHotelContext> opt) : base(opt)
     {
-        
+        Database.EnsureCreated(); 
+    }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Configuration des entités et relations
+
+        // Ajout des données dans la table "Currencies"
+        modelBuilder.Entity<Currency>().HasData(
+            new Currency { ID = "1", CODE = "EUR", NAME = "Euro" },
+            new Currency { ID = "2", CODE = "USD", NAME = "Dollar" },
+            new Currency { ID = "3", CODE = "GBP", NAME = "Livre Sterling" },
+            new Currency { ID = "4", CODE = "JPY", NAME = "Yen" },
+            new Currency { ID = "5", CODE = "CHF", NAME = "Franc Suisse" }
+        );
     }
     
     public DbSet<Client> Clients { get; set; }

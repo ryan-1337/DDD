@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(XyzHotelContext))]
-    [Migration("20240121155234_FinishedStructure")]
-    partial class FinishedStructure
+    [Migration("20240123230937_FinishedDB")]
+    partial class FinishedDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -154,7 +154,7 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("CURRENCY_ID")
+                    b.Property<string>("CURRENCY")
                         .IsRequired()
                         .HasColumnType("longtext");
 
