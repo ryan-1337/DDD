@@ -8,6 +8,7 @@ public static class MapEndpoints
     {
         group.MapClient();
         group.MapPayment();
+        group.MapWallet();
         return group;
     }
 }

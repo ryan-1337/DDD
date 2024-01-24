@@ -15,7 +15,7 @@ public class WalletService
 
     public async Task<bool> CreditWallet(Guid clientId, decimal amount, string currency)
     {
-        var wallet = await _walletRepository.GetByIdAsync(clientId);
+        var wallet = await _walletRepository.GetByClientIdAsync(clientId);
 
         if (wallet == null)
         {
@@ -38,7 +38,7 @@ public class WalletService
 
     public async Task<bool> DebitWallet(Guid clientId, decimal amount, string currency)
     {
-        var wallet = await _walletRepository.GetByIdAsync(clientId);
+        var wallet = await _walletRepository.GetByClientIdAsync(clientId);
 
         if (wallet == null || wallet.Amount < amount)
         {

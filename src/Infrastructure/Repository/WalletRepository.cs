@@ -14,7 +14,7 @@ public class WalletRepository : IWalletRepository
         _dbContext = dbContext;
     }
 
-    public async Task<Wallet> GetByIdAsync(Guid clientId)
+    public async Task<Wallet> GetByClientIdAsync(Guid clientId)
     {
         var walletDataAccess = await _dbContext.Wallets
             .SingleOrDefaultAsync(w => w.CLIENT_ID == clientId.ToString());

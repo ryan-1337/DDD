@@ -11,7 +11,7 @@ public static class WalletMapper
         
         return new Wallet
         {
-            ID = wallet.ClientId.ToString(),
+            ID = Guid.NewGuid().ToString(),
             CLIENT_ID = wallet.ClientId.ToString(),
             AMOUNT = wallet.Amount,
             CURRENCY = wallet.Currency

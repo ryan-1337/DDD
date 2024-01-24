@@ -4,7 +4,7 @@ namespace Domain;
 
 public interface IWalletRepository
 {
-    Task<Wallet> GetByIdAsync(Guid clientId);
+    Task<Wallet> GetByClientIdAsync(Guid clientId);
     Task AddAsync(Wallet wallet);
     Task UpdateAsync(Wallet wallet);
 }

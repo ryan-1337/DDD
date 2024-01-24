@@ -12,15 +12,18 @@ var services = builder.Services;
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 builder.Services.AddDbContext<XyzHotelContext>(opts =>
-{
-    var connectionString = builder.Configuration.GetConnectionString("HotelDB");
-    opts.UseMySql(connectionString,
-        ServerVersion.AutoDetect(connectionString),
+    {
+        var connectionString = builder.Configuration.GetConnectionString("HotelDB");
+        opts.UseMySql(connectionString,
+            ServerVersion.AutoDetect(connectionString),
 
-        options => options.MigrationsAssembly("Infrastructure"));
-})
+            options => options.MigrationsAssembly("Infrastructure"));
+    })
     .AddTransient<IClientRepository, ClientRepository>()
-    .AddTransient<IPaymentRepository, PaymentRepository>();
+    .AddTransient<IPaymentRepository, PaymentRepository>()
+    .AddTransient<IWalletRepository, WalletRepository>()
+    .AddTransient<IBookingRepository, BookingRepository>()
+    .AddTransient<IRoomRepository, RoomRepository>();
 
 
 builder.Services

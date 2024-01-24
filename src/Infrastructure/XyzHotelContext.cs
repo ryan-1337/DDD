@@ -14,9 +14,6 @@ public class XyzHotelContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // Configuration des entités et relations
-
-        // Ajout des données dans la table "Currencies"
         modelBuilder.Entity<Currency>().HasData(
             new Currency { ID = "1", CODE = "EUR", NAME = "Euro" },
             new Currency { ID = "2", CODE = "USD", NAME = "Dollar" },
