@@ -3,7 +3,7 @@ using Application.Wallets.Responses;
 
 namespace Application.Wallets.Queries;
 
-public class CreateWalletQuery : IQuery<WalletResponse>
+public class UpdateWalletQuery : IQuery<WalletResponse>
 {
     public required string ClientId{ get; set; }
     public decimal Amount { get; set; }
