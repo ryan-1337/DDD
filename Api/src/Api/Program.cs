@@ -9,6 +9,18 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CORSPolicy",
+        builder =>
+        {
+            builder
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:5173");
+        });
+});
+
 var services = builder.Services;
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
@@ -42,6 +54,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("CORSPolicy");
 
 app.UseSerilogRequestLogging();
 
