@@ -2,7 +2,7 @@ using Domain.Entities;
 
 namespace Domain.Services;
 
-public class CurrencyConversionService
+public class CurrencyConversionService : ICurrencyConversionService
 {
     private readonly Dictionary<string, decimal> exchangeRates;
 

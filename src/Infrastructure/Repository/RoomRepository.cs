@@ -17,13 +17,13 @@ public class RoomRepository : IRoomRepository
     public async Task<IEnumerable<Room>> GetAllAsync()
     {
         var roomsDataAccess = await _dbContext.Rooms.ToListAsync();
-        return roomsDataAccess.Select(RoomMapper.MapToEntity);
+        return RoomMapper.MapToListEntity(roomsDataAccess);
     }
 
-    public async Task<Room> GetByIdAsync(Guid roomId)
+    public async Task<Room> GetByIdAsync(string roomId)
     {
         var roomDataAccess = await _dbContext.Rooms
-            .SingleOrDefaultAsync(r => r.ID == roomId.ToString());
+            .SingleOrDefaultAsync(r => r.ID == roomId);
 
         return RoomMapper.MapToEntity(roomDataAccess);
     }

@@ -9,6 +9,8 @@ public static class MapEndpoints
         group.MapClient();
         group.MapPayment();
         group.MapWallet();
+        group.MapRoom();
+        group.MapBooking();
         return group;
     }
 }

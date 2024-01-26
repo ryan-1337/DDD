@@ -2,6 +2,7 @@ using Api;
 using Api.Middleware;
 using Application;
 using Domain;
+using Domain.Services;
 using Infrastructure;
 using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -23,8 +24,9 @@ builder.Services.AddDbContext<XyzHotelContext>(opts =>
     .AddTransient<IPaymentRepository, PaymentRepository>()
     .AddTransient<IWalletRepository, WalletRepository>()
     .AddTransient<IBookingRepository, BookingRepository>()
-    .AddTransient<IRoomRepository, RoomRepository>();
-
+    .AddTransient<IRoomRepository, RoomRepository>()
+    .AddTransient<IWalletService, WalletService>()
+    .AddTransient<ICurrencyConversionService, CurrencyConversionService>();
 
 builder.Services
     .AddApplication()

@@ -12,10 +12,10 @@ public class WalletConfiguration : IEntityTypeConfiguration<Wallet>
 
         builder.Property(w => w.ID)
             .UseMySqlIdentityColumn();
-
-        builder.Property(w => w.CLIENT_ID)
-            .HasColumnName("CLIENT_ID")
-            .HasColumnType("CHAR(36)")
+        
+        builder.HasOne(w => w.CLIENT_ID)
+            .WithMany()
+            .HasForeignKey(w => w.CLIENT_ID)
             .IsRequired();
 
         builder.Property(w => w.AMOUNT)
@@ -27,5 +27,6 @@ public class WalletConfiguration : IEntityTypeConfiguration<Wallet>
             .HasColumnName("CURRENCY")
             .HasMaxLength(10)
             .IsRequired();
+        
     }
 }

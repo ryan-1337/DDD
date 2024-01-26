@@ -27,7 +27,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Bookings\Validations\" />
       <Folder Include="Payments\Validations\" />
+      <Folder Include="Rooms\Validations\" />
     </ItemGroup>
 
 </Project>

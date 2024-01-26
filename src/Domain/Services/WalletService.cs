@@ -2,12 +2,12 @@ using Domain.Entities;
 
 namespace Domain.Services;
 
-public class WalletService
+public class WalletService : IWalletService
 {
     private readonly IWalletRepository _walletRepository;
-    private readonly CurrencyConversionService _currencyConversionService;
+    private readonly ICurrencyConversionService _currencyConversionService;
 
-    public WalletService(IWalletRepository walletRepository, CurrencyConversionService currencyConversionService)
+    public WalletService(IWalletRepository walletRepository, ICurrencyConversionService currencyConversionService)
     {
         _walletRepository = walletRepository ?? throw new ArgumentNullException(nameof(walletRepository));
         _currencyConversionService = currencyConversionService ?? throw new ArgumentNullException(nameof(currencyConversionService));

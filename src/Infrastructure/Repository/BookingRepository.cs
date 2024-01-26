@@ -16,8 +16,21 @@ public class BookingRepository : IBookingRepository
 
     public async Task AddAsync(Booking booking)
     {
-        var bookingToAdd = BookingMapper.MapToDataAccess(booking);
-        await this._dbContext.Bookings.AddAsync(bookingToAdd);
+        
+        var room = await _dbContext.Rooms.FirstOrDefaultAsync(r => r.ID == booking.Room.Id);
+        var bookingToCreate = new DataAccess.XyzHotel.Booking
+        {
+            ID = booking.Id.ToString(),
+            CLIENT_ID = booking.ClientId.ToString(),
+            CHECK_IN_DATE = booking.CheckInDate,
+            NUMBER_OF_NIGHTS = booking.NumberOfNights,
+            ROOM = room,
+            IS_CONFIRMED = booking.IsConfirmed,
+            IS_CANCELLED = booking.IsCancelled,
+            INITIAL_PAYMENT = booking.InitialPayment,
+            TOTAL_AMOUNT = booking.TotalAmount,
+        };
+        await this._dbContext.Bookings.AddAsync(bookingToCreate);
         await this._dbContext.SaveChangesAsync();
     }
 

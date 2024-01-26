@@ -8,7 +8,7 @@ public static class BookingMapper
     {
         if (booking == null)
             return null;
-
+        
         return new Booking
         {
             ID = booking.Id.ToString(),

@@ -11,7 +11,7 @@ public static class RoomMapper
 
         return new Room()
         {
-            ID = room.Id.ToString(),
+            ID = room.Id,
             NAME = room.Name,
             PRICE_PER_NIGHT = room.PricePerNight,
             OPTIONS = room.Options,
@@ -25,10 +25,24 @@ public static class RoomMapper
 
         return new Domain.Entities.Room()
         {
-            Id = Guid.Parse(roomDataAccess.ID),
+            Id = roomDataAccess.ID,
             Name = roomDataAccess.NAME,
             PricePerNight = roomDataAccess.PRICE_PER_NIGHT,
             Options = roomDataAccess.OPTIONS
         };
+    }
+    
+    public static List<Domain.Entities.Room> MapToListEntity(List<Room> roomsDataAccess)
+    {
+        if (roomsDataAccess == null)
+            return null;
+
+        return roomsDataAccess.Select(roomDataAccess => new Domain.Entities.Room
+        {
+            Id = roomDataAccess.ID,
+            Name = roomDataAccess.NAME,
+            PricePerNight = roomDataAccess.PRICE_PER_NIGHT,
+            Options = roomDataAccess.OPTIONS
+        }).ToList();
     }
 }
