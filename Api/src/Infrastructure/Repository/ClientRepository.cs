@@ -29,6 +29,14 @@ public class ClientRepository : IClientRepository
 
         return ClientMapper.MapToEntity(clientDataAccess);
     }
+    
+    public async Task<Client?> GetClientById(string id)
+    {
+        var clientDataAccess = await _xyzHotelContext.Clients
+            .FirstOrDefaultAsync(x => x.ID == id);
+    
+        return clientDataAccess != null ? ClientMapper.MapToEntity(clientDataAccess) : null;
+    }
 
     public async Task<Client?> GetClientByFullName(string fullName)
     {

@@ -1,5 +1,5 @@
     <template>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">XyZHotel</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -10,19 +10,16 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page">
-
                 <router-link class="nav-link active" to="/">Home</router-link>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link">
-
-                <router-link class="nav-link" to="/clients">Clients</router-link>
+                <router-link class="nav-link" to="/create-booking">booking</router-link>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link">
-
                 <router-link class="nav-link" to="/create-client">Client</router-link>
               </a>
             </li>
