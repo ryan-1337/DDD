@@ -14,6 +14,7 @@ Documentation :
         cd Docker && docker-compose up
 
     Vue: 
+        cd Client/ihm
         npm run dev
         url: http://localhost:5173/
 
