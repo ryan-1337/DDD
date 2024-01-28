@@ -1,5 +1,22 @@
 # DDD
 
+Documentation : 
+
+    Instalation :
+
+    install dotnet 8:
+        https://dotnet.microsoft.com/en-us/download
+        
+        Api documentation
+        url: http://localhost:5104/swagger
+
+    Docker: 
+        cd Docker && docker-compose up
+
+    Vue: 
+        npm run dev
+        url: http://localhost:5173/
+
 Ubiquitous Language :
 
 Endpoints :
