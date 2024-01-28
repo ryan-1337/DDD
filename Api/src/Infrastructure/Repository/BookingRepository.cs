@@ -61,7 +61,7 @@ public class BookingRepository : IBookingRepository
     
     public async Task UpdateAsync(Booking booking)
     {
-        var existingBooking = await _dbContext.Bookings.FindAsync(booking.Id);
+        var existingBooking = await _dbContext.Bookings.FindAsync(booking.Id.ToString());
 
         if (existingBooking == null)
         {
@@ -70,7 +70,7 @@ public class BookingRepository : IBookingRepository
 
         var updatedBooking = BookingMapper.MapToDataAccess(booking, existingBooking);
 
-        _dbContext.Entry(existingBooking).State = EntityState.Modified;
+        _dbContext.Entry(updatedBooking).State = EntityState.Modified;
         await _dbContext.SaveChangesAsync();
     }
 }

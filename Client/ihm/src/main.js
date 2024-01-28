@@ -14,14 +14,20 @@ import "@/assets/style.css"
 import { createRouter, createWebHistory } from "vue-router";
 import ClientForm from "@/components/ClientForm.vue";
 import BookingForm from "@/components/BookingForm.vue";
+import BookingList from "@/components/BookingList.vue";
+import WalletForm from "@/components/WalletForm.vue";
+import WalletList from "@/components/WalletList.vue";
 import HomeView from "@/views/HomeView.vue";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/home", component: HomeView },
+    { path: "/", component: HomeView },
     { path: "/create-client", component: ClientForm },
     { path: "/create-booking", component: BookingForm },
+    { path: "/list-booking", component: BookingList },
+    { path: "/create-wallet", component: WalletForm },
+    { path: "/list-wallet", component: WalletList },
   ],
 });
 

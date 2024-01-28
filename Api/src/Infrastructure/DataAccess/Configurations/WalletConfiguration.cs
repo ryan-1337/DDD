@@ -1,6 +1,7 @@
 using Infrastructure.DataAccess.XyzHotel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Infrastructure.DataAccess.Model;
 
@@ -12,12 +13,15 @@ public class WalletConfiguration : IEntityTypeConfiguration<Wallet>
 
         builder.Property(w => w.ID)
             .UseMySqlIdentityColumn();
-        
-        builder.HasOne(w => w.CLIENT_ID)
-            .WithMany()
-            .HasForeignKey(w => w.CLIENT_ID)
-            .IsRequired();
 
+        builder.Property(w => w.CLIENT_ID)
+            .HasColumnName("CLIENT_ID")
+            .HasColumnType("VARCHAR(255)")
+            .UseMySqlIdentityColumn();
+        
+        
+        builder.HasIndex(e => e.CLIENT_ID).IsUnique();
+            
         builder.Property(w => w.AMOUNT)
             .HasColumnName("AMOUNT")
             .HasColumnType("DECIMAL(18,2)")

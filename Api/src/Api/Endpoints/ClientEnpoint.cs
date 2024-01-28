@@ -9,11 +9,12 @@ public static class ClientEnpoint
     public static void MapClient(this IEndpointRouteBuilder app)
     {
         app.MapPost("api/clients", async (
-            [FromServices] ISender sender, 
-            [FromBody] CreateClientQuery query) =>
-        {
-            var response = await sender.Send(query);
-            return Results.Ok(response);
-        });
+                [FromServices] ISender sender,
+                [FromBody] CreateClientQuery query) =>
+            {
+                var response = await sender.Send(query);
+                return Results.Ok(response);
+            })
+            .WithTags("CreateClient");
     }
 }

@@ -32,12 +32,11 @@ public class WalletRepository : IWalletRepository
     public async Task UpdateAsync(Wallet wallet)
     {
         var existingWallet = await _dbContext.Wallets
-            .SingleOrDefaultAsync(w => w.CLIENT_ID == wallet.ClientId.ToString());
+            .SingleOrDefaultAsync(w => w.ID == wallet.Id.ToString());
 
         if (existingWallet != null)
         {
             existingWallet.AMOUNT = wallet.Amount;
-            existingWallet.CURRENCY = wallet.Currency;
 
             _dbContext.Wallets.Update(existingWallet);
             await _dbContext.SaveChangesAsync();

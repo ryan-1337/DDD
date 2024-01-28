@@ -17,6 +17,7 @@ public class ClientConfiguration : IEntityTypeConfiguration<Client>
             .IsRequired();
         entity.Property(e => e.EMAIL)
             .HasMaxLength(255)
+            .HasColumnType("VARCHAR(255)")
             .IsRequired();
         entity.Property(e => e.PHONENUMBER)
             .HasMaxLength(10)

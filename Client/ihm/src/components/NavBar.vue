@@ -15,16 +15,28 @@
             </li>
             <li class="nav-item">
               <a class="nav-link">
+                <router-link class="nav-link" to="/create-client">Client</router-link>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
                 <router-link class="nav-link" to="/create-booking">booking</router-link>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link">
-                <router-link class="nav-link" to="/create-client">Client</router-link>
+                <router-link class="nav-link" to="/list-booking">List my booking</router-link>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              <a class="nav-link">
+                <router-link class="nav-link" to="/create-wallet">Create wallet</router-link>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
+                <router-link class="nav-link" to="/list-wallet">List wallet</router-link>
+              </a>
             </li>
           </ul>
         </div>

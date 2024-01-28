@@ -24,5 +24,14 @@ public static class BookingEndpoint
                 return Results.Ok(response);
             })
             .WithTags("GetAllBookingByClientId");
+        
+        
+        app.MapPut("api/booking", async (
+                [FromServices] ISender sender, [AsParameters] UpdateBookingQuery query) => 
+            {
+                var response = await sender.Send(query);
+                return Results.Ok(response);
+            })
+            .WithTags("UpdateBooking");
     }
 }

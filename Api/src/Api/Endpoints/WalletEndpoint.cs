@@ -9,11 +9,10 @@ public static class WalletEndpoint
 {
     public static void MapWallet(this IEndpointRouteBuilder app)
     {
-        app.MapGet("api/wallet/{clientId}", async (
+        app.MapGet("api/wallet/", async (
                 [FromServices] ISender sender,
-                [FromRoute] string clientId) =>
+                [AsParameters] GetWalletByClientIdQuery query) =>
             {
-                var query = new GetWalletByClientIdQuery { ClientId = clientId };
                 var response = await sender.Send(query);
                 return Results.Ok(response);
             })
@@ -25,8 +24,8 @@ public static class WalletEndpoint
                 [FromServices] ISender sender,
                 [FromBody] CreateWalletQuery query) =>
             {
-                await sender.Send(query);
-                return Results.Ok();
+                var response = await sender.Send(query);
+                return Results.Ok(response);
             })
             .Produces(StatusCodes.Status201Created)
             .Produces(StatusCodes.Status400BadRequest)
@@ -34,10 +33,10 @@ public static class WalletEndpoint
         
          app.MapPut("api/wallet", async (
                  [FromServices] ISender sender,
-                 [FromBody] UpdateWalletQuery query) =>
+                 [AsParameters] UpdateWalletQuery query) =>
              {
-                 await sender.Send(query);
-                 return Results.Ok();
+                 var response = await sender.Send(query);
+                 return Results.Ok(response);
              })
              .Produces(StatusCodes.Status202Accepted)
              .Produces(StatusCodes.Status400BadRequest)

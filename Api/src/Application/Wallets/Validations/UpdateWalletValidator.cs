@@ -7,6 +7,6 @@ public class UpdateWalletValidator : AbstractValidator<UpdateWalletQuery>
 {
     public UpdateWalletValidator()
     {
-        RuleFor(x => x.ClientId).NotEmpty();
+        RuleFor(x => x.Id).NotEmpty();
     }
 }

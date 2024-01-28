@@ -32,7 +32,7 @@ public class GetAllBookingByClientIdHandler : IRequestHandler<GetAllBookingByCli
          IsConfirmed = bookings.IsConfirmed,
          TotalAmount = bookings.TotalAmount,
          NumberOfNights = bookings.NumberOfNights,
-         Room = bookings.Room.Id
+         Room = bookings.Room
       }).ToList();
 
       return bookingResponses;

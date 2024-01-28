@@ -55,7 +55,7 @@ public class CreateBookingHandler : IRequestHandler<CreateBookingQuery, IResult<
         var response = new BookingResponse
         {
             Id = booking.Id.ToString(), ClientId = booking.ClientId.ToString(), NumberOfNights = booking.NumberOfNights,
-            Room = booking.Room.Id, InitialPayment = booking.InitialPayment, CheckInDate = booking.CheckInDate,
+            Room = booking.Room, InitialPayment = booking.InitialPayment, CheckInDate = booking.CheckInDate,
             TotalAmount = booking.TotalAmount
         };
 
